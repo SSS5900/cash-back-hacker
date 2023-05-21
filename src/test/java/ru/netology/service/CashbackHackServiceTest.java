@@ -1,47 +1,44 @@
 package ru.netology.service;
 
-import org.testng.annotations.Test;
-
-import static org.testng.Assert.*;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class CashbackHackServiceTest {
 
+
     @Test
-    public void testRemain() {
+    public void remain() {
         CashbackHackService service = new CashbackHackService();
 
         int amount = 1800;
 
-        int actual = service.remain(amount);
         int expected = 200;
-        assertEquals(actual, expected);
-
-
-    }
-
-    @Test
-    public void testRemainPerThousand() {
-        CashbackHackService service = new CashbackHackService();
-
-        int amount = 1000;
-
         int actual = service.remain(amount);
-        int expected = 0;
-        assertEquals(actual, expected);
-
+        Assert.assertEquals(actual, expected);
 
     }
 
     @Test
-    public void testRemainUpToThousand() {
+    public void remainUpToThousand() {
         CashbackHackService service = new CashbackHackService();
 
         int amount = 900;
 
-        int actual = service.remain(amount);
         int expected = 100;
-        assertEquals(actual, expected);
+        int actual = service.remain(amount);
+        Assert.assertEquals(actual, expected);
 
+    }
+
+    @Test
+    public void remainThousand() {
+        CashbackHackService service = new CashbackHackService();
+
+        int amount = 1000;
+
+        int expected = 0;
+        int actual = service.remain(amount);
+        Assert.assertEquals(actual, expected);
 
     }
 }
